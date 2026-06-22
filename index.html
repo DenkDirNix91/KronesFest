@@ -230,119 +230,126 @@ function meet() {
 
 function finish(type) {
 
-  document.body.innerHTML = `
-    <div style="font-family:Arial; text-align:center; margin-top:100px;">
-      <h1>Super, das freut mich! 🙂</h1>
+const actionText =
+type === "pickup"
+? "Ich hole dich ab 🚗"
+: "Wir treffen uns dort 🎡";
 
-      <p> Wollen wir auf WhatsApp weiterschreiben?</p>
+document.body.innerHTML = ` <div style="
+   min-height:100vh;
+   background:#efd0e0;
+   font-family:Arial,sans-serif;
+   text-align:center;
+   padding-top:60px;
+   box-sizing:border-box;
+ ">
 
-      <button onclick="openWhatsApp('${type}')"
-        style="
-          font-size:20px;
-          padding:12px 20px;
-          background:#25D366;
-          color:white;
-          border:none;
-          border-radius:10px;">
-        WhatsApp öffnen 💬
-      </button>
+```
+  <img
+    src="https://media.giphy.com/media/l46CyJmS9KUbokzsI/giphy.gif"
+    style="
+      width:150px;
+      border-radius:20px;
+      margin-bottom:20px;
+    ">
+
+  <h2 style="
+    color:#111;
+    margin-bottom:30px;
+  ">
+    Gut dass du nicht Nein gesagt hast. 😉
+  </h2>
+
+  <div style="
+    background:white;
+    width:320px;
+    max-width:90%;
+    margin:auto;
+    border-radius:20px;
+    padding:25px;
+    text-align:left;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+  ">
+
+    <div style="
+      font-size:13px;
+      color:#777;
+      margin-bottom:5px;
+    ">
+      📅 SEI BEREIT AM
     </div>
-  `;
 
-  launchConfetti();
-}
+    <div style="
+      font-size:22px;
+      font-weight:bold;
+    ">
+      Freitag, 27. Juni · 19:00 Uhr
+    </div>
 
-// ================= WHATSAPP =================
+    <div style="
+      margin-top:10px;
+      color:#555;
+    ">
+      📍 Krones Fest
+    </div>
 
-function openWhatsApp(type) {
+    <hr style="
+      border:none;
+      border-top:1px solid #eee;
+      margin:18px 0;
+    ">
 
-  const number = "4915142327096";
+    <div style="
+      font-size:13px;
+      color:#777;
+      margin-bottom:5px;
+    ">
+      SO MACHEN WIR'S
+    </div>
 
-  const text =
-    type === "pickup"
-      ? "Hey Karo 🙂 ich hole dich fürs Krones Fest ab 🚗"
-      : "Hey Karo 🙂 wir treffen uns direkt beim Krones Fest 🎡";
+    <div style="
+      font-size:22px;
+      font-weight:bold;
+    ">
+      ${actionText}
+    </div>
 
-  window.location.href =
-    `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
-}
+  </div>
 
-// ================= CONFETTI =================
+  <button
+    onclick="openWhatsApp('${type}')"
+    style="
+      margin-top:30px;
+      background:#25D366;
+      color:white;
+      border:none;
+      border-radius:40px;
+      padding:18px 35px;
+      font-size:22px;
+      font-weight:bold;
+      cursor:pointer;
+      box-shadow:0 8px 20px rgba(37,211,102,.25);
+    ">
+    WhatsApp Bestätigung senden 💬
+  </button>
 
-function launchConfetti() {
+  <div style="
+    margin-top:25px;
+    color:#444;
+    line-height:1.5;
+  ">
+    <em>
+      P.S. Normale Leute schicken eine WhatsApp.<br>
+      Ich hab eine Website gebaut.
+    </em>
+  </div>
 
-  const canvas = document.createElement("canvas");
-  document.body.appendChild(canvas);
+</div>
+```
 
-  canvas.style.position = "fixed";
-  canvas.style.top = "0";
-  canvas.style.left = "0";
-  canvas.style.width = "100vw";
-  canvas.style.height = "100vh";
-  canvas.style.pointerEvents = "none";
-  canvas.style.zIndex = "9999";
+`;
 
-  const ctx = canvas.getContext("2d");
-
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  const colors = ["#2e7d32", "#1565c0", "#c62828", "#f9a825"];
-  const particles = [];
-
-  const cx = canvas.width / 2;
-  const cy = canvas.height / 2;
-
-  for (let i = 0; i < 160; i++) {
-
-    const angle = Math.random() * Math.PI * 2;
-    const speed = Math.random() * 8 + 3;
-
-    particles.push({
-      x: cx,
-      y: cy,
-      vx: Math.cos(angle) * speed,
-      vy: Math.sin(angle) * speed,
-      size: Math.random() * 5 + 2,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      gravity: 0.12,
-      alpha: 1
-    });
-  }
-
-  function animate() {
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    let alive = false;
-
-    for (let p of particles) {
-
-      p.vy += p.gravity;
-      p.x += p.vx;
-      p.y += p.vy;
-      p.alpha -= 0.01;
-
-      if (p.alpha > 0) alive = true;
-
-      ctx.globalAlpha = Math.max(p.alpha, 0);
-      ctx.fillStyle = p.color;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    ctx.globalAlpha = 1;
-
-    if (alive) {
-      requestAnimationFrame(animate);
-    } else {
-      canvas.remove();
-    }
-  }
-
-  animate();
+launchConfetti();
 }
 
 </script>
