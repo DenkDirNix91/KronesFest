@@ -347,15 +347,17 @@ function updateEmotion() {
   if (escapeCount === 1) {
     runawayBtn.innerText = "Wirklich? 🥺";
   } else if (escapeCount === 2) {
-    runawayBtn.innerText = "Ganz sicher?";
+    runawayBtn.innerText = "Ganz sicher? 🥺";
   } else if (escapeCount === 3) {
     runawayBtn.innerText = "Warte kurz, bitte";
   } else if (escapeCount === 4) {
-    runawayBtn.innerText = "Stop!";
+    runawayBtn.innerText = "Stop! ✋🏻";
   } else if (escapeCount === 5) {
     runawayBtn.innerText = "Versuchs nochmal!";
+  } else if (escapeCount === 6) {
+    runawayBtn.innerText = "Ha! Zu langsam";
   } else {
-    runawayBtn.innerText = "Ha! Zu langsam! ";
+    runawayBtn.innerText = "Klick auf Nein ";
   }
 
   if (escapeCount >= 3) {
