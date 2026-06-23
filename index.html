@@ -100,7 +100,7 @@ button {
     letter-spacing:1px;
     text-transform:uppercase;
   ">
-    ✨ Follow Up oder Short Reminder ✨<br> (wie wir Officemenschen sagen würden 😅)
+    Follow Up oder Short Reminder<br> (wie wir Officemenschen sagen würden 😅)
   </div>
 
   <h1 style="
@@ -110,7 +110,7 @@ button {
     margin:0 auto;
     color:#111827;
   ">
-    Einladung ✉️<br>
+    Einladung ✨✉️<br>
   </h1>
 
   <h1 style="
@@ -192,10 +192,10 @@ button {
 
 <div id="phase3" style="max-width:700px;margin:auto;">
   <h2>Noch eine wichtige Frage:</h2>
-  <p>Wie gehst du aufs Krones Fest? :) Es sagt glaube 35 Grad an.. 🫠 </p>
+  <p>Was ziehst du an? :) Es sagt glaube 35 Grad an.. 🫠🙈 </p>
 
-  <button class="choiceBtn" onclick="outfitChosen('tracht')">In Tracht 👗</button>
-  <button class="choiceBtn" onclick="outfitChosen('leger')">Eher leger 😎</button>
+  <button class="choiceBtn" onclick="outfitChosen('tracht')">Tracht 👗</button>
+  <button class="choiceBtn" onclick="outfitChosen('leger')">Eher leger ☀️😎</button>
 </div>
   
   <img id="sadHamster"
@@ -377,7 +377,7 @@ function finish(type, outfit) {
   const outfitText =
     outfit === "tracht"
       ? "👗 Fralle in Tracht"
-      : "😎 Eher leger";
+      : "☀️😎 Eher leger";
 
   document.body.innerHTML = `
     <div style="
@@ -471,14 +471,14 @@ function openWhatsApp(type, outfit) {
   let text = "";
 
   if (type === "pickup") {
-    text = "Hey :) mei bist du a Depp 😂 klar ich komm gerne mit! Bitte hole mich fürs Krones Fest ab 😊🚗";
+    text = "Hey :) mei bist du a Depp 😂 klar ich komm gerne mit! Wäre cool, wenn du mich abholen könntest! 😊🚗";
   } else {
     text = "Hey :) mei bist du a Depp 😂 klar ich komm gerne mit! Wir treffen uns direkt beim Krones Fest 😊🎡";
   }
 
   text += outfit === "tracht"
     ? " Ich komme in Tracht 👗"
-    : " Ich komme eher leger 😎";
+    : " Ich komme eher leger ☀️😎";
 
   window.location.href =
     `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
